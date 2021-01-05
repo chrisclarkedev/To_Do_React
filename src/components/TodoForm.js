@@ -16,14 +16,16 @@ function TodoForm({ addTodo }) {
     e.preventDefault();
     if (todo.task.trim()) {
       addTodo({ ...todo, id: uuid, v4() });
+      // reset task inputted
+      setTodo({ ...todo, task: "" });
     }
   }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input name="task" value={todo.task} onChange={handleTaskInputChange} />
       <button />
     </form>
   );
 }
 
-export default TodoForm;
+export default TodoFo  rm;
