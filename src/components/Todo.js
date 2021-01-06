@@ -8,13 +8,13 @@ function Todo({ todo, toggleComplete, removeTodo }) {
   }
 
   function handleRemoveClick() {
-    // Onclick function for the remove todos
+    // Onclick function to remove todos
     removeTodo(todo.id);
   }
+
   return (
     <ListItem style={{ display: "flex" }}>
       <Checkbox checked={todo.completed} onClick={handleCheckboxClick} />
-      {/* Once task is completed cross it out in TodoList */}
       <Typography
         variant="body1"
         style={{

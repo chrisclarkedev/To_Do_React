@@ -57,9 +57,8 @@ function App() {
   return (
     <div className="App">
       <Typography style={{ padding: 16 }} variant="h1">
-        React To Do
+        To Do List
       </Typography>
-      <p>Todo</p>
       <TodoForm addTodo={addTodo} />
       <TodoList
         todos={todos}

@@ -26,7 +26,7 @@ function TodoForm({ addTodo }) {
   return (
     <form className="todo-form" onSubmit={handleSubmit}>
       <TextField
-        label="Task"
+        label="Tasks"
         name="task"
         type="text"
         value={todo.task}
