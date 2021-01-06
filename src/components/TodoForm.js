@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import uuid from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 function TodoForm({ addTodo }) {
   const [todo, setTodo] = useState({
@@ -14,8 +14,10 @@ function TodoForm({ addTodo }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    // prevents browser refresh
     if (todo.task.trim()) {
-      addTodo({ ...todo, id: uuid, v4() });
+      // trim() removes the whitespace of the string
+      addTodo({ ...todo, id: uuidv4() });
       // reset task inputted
       setTodo({ ...todo, task: "" });
     }
@@ -23,7 +25,7 @@ function TodoForm({ addTodo }) {
   return (
     <form onSubmit={handleSubmit}>
       <input name="task" value={todo.task} onChange={handleTaskInputChange} />
-      <button />
+      <button type="submit">submit</button>
     </form>
   );
 }
