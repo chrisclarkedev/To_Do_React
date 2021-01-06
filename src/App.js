@@ -26,12 +26,43 @@ function App() {
     // adds to the todos array
     setTodos([todo, ...todos]);
   }
+
+  function toggleComplete(id) {
+    // Function that takes in the id of the todo
+    setTodos(
+      // Passes a new todo array which will get by performing mapping
+      // Map over each todo and check if the id matches the one passed in
+      // If so return a new object with the completed property negated
+      // False becomes true and true becomes false when function is run under certain id
+      todos.map((todo) => {
+        if (todos.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      })
+    );
+  }
+
+  // Delete todo function
+  function removeTodo(id) {
+    // Filter allows the removal of components in an array
+    // Todo will be kept if the id is not the one we are looking for
+    // If the id is the same remove it
+    setTodos(todos.filter((todo) => todo.id !== id));
+  }
   return (
     <div className="App">
       <header className="App-header">
         <p>Todo</p>
         <TodoForm addTodo={addTodo} />
-        <TodoList todos={todos} />
+        <TodoList
+          todos={todos}
+          toggleComplete={toggleComplete}
+          removeTodo={removeTodo}
+        />
       </header>
     </div>
   );
