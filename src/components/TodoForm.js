@@ -17,22 +17,23 @@ function TodoForm({ addTodo }) {
     e.preventDefault();
     // prevents browser refresh
     if (todo.task.trim()) {
-      // trim() removes the whitespace of the string
+      // removes the whitespace of the string
       addTodo({ ...todo, id: uuidv4() });
       // reset task inputted
       setTodo({ ...todo, task: "" });
     }
   }
+
   return (
     <form className="todo-form" onSubmit={handleSubmit}>
       <TextField
-        label="Tasks"
-        name="task"
+        label="Task"
         type="text"
+        name="task"
         value={todo.task}
         onChange={handleTaskInputChange}
       />
-      <Button type="submit">submit</Button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 }

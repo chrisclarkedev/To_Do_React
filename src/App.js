@@ -15,28 +15,29 @@ function App() {
       setTodos(storageTodos);
     }
   }, []);
+
   // Use Effect hook for browser storage
   // Everytime the todo array changes, store information in local storage
 
   useEffect(() => {
-    // completed when todos array updates
+    // completed when todo array updates
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
   }, [todos]);
 
   function addTodo(todo) {
-    // adds to the todos array
+    // adds to the todo array
     setTodos([todo, ...todos]);
   }
 
   function toggleComplete(id) {
-    // Function that takes in the id of the todo
     setTodos(
+      // Function that takes in the id of todos
       // Passes a new todo array which will get by performing mapping
       // Map over each todo and check if the id matches the one passed in
       // If so return a new object with the completed property negated
       // False becomes true and true becomes false when function is run under certain id
       todos.map((todo) => {
-        if (todos.id === id) {
+        if (todo.id === id) {
           return {
             ...todo,
             completed: !todo.completed,
@@ -47,26 +48,26 @@ function App() {
     );
   }
 
-  // Delete todo function
+  // Deletes todo function
   function removeTodo(id) {
     // Filter allows the removal of components in an array
     // Todo will be kept if the id is not the one we are looking for
     // If the id is the same remove it
     setTodos(todos.filter((todo) => todo.id !== id));
   }
+
   return (
     <div className="App">
       <Typography style={{ padding: 16 }} variant="h1">
-        To Do List
+        To do list
       </Typography>
       <TodoForm addTodo={addTodo} />
       <TodoList
         todos={todos}
-        toggleComplete={toggleComplete}
         removeTodo={removeTodo}
+        toggleComplete={toggleComplete}
       />
     </div>
   );
 }
-
 export default App;

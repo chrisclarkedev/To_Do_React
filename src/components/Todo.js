@@ -18,7 +18,7 @@ function Todo({ todo, toggleComplete, removeTodo }) {
       <Typography
         variant="body1"
         style={{
-          textdecoration: todo.completed ? "line-through" : null,
+          textDecoration: todo.completed ? "line-through" : null,
         }}
       >
         {todo.task}
